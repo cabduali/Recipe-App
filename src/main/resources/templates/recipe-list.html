@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Recipe List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f2fc;
+        }
+
+        .page-container {
+            background-color: #f3f2fc;
+            padding: 0;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .navbar-custom {
+            background-color: #3C008D; /* Dark background color */
+            padding: 10px 20px; /* Adjust padding for better alignment */
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-link {
+            color: white;
+            font-size: 16px; /* Adjust font size */
+            font-family: Arial, sans-serif; /* Adjust font family */
+            margin-left: 20px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #ddd; /* Lighter color on hover */
+        }
+
+        .table thead th {
+            background-color: #3C008D;
+            color: white; /* Optional: change text color for better contrast */
+        }
+
+        .btn-edit {
+            background-color: #E1979F;
+            color: white; /* Optional: change text color for better contrast */
+            border: none; /* Remove border */
+        }
+
+        .btn-edit:hover {
+            background-color: #3C008D; /* Darker shade for hover effect */
+        }
+
+        .btn-add, .btn-search {
+            background: #E1979F;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: none;
+            font-size: 16px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+             text-decoration: none;
+        }
+
+        .btn-add:hover, .btn-search:hover {
+            background: #290065; /* Darker shade for hover effect */
+            box-shadow: 0 5px 15px rgba(0, 0, 130, 0.3);
+            color: white;
+             text-decoration: none;
+        }
+
+        .recipe-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 3em;
+            font-weight: 700;
+            text-align: center;
+            color: #4B0082;
+            margin-top: 100px; /* Adjust for fixed header */
+            margin-bottom: 30px;
+        }
+
+        .container {
+            margin-top: 100px; /* Adjust for fixed header */
+        }
+
+        .description-column, .image-url-column {
+            max-width: 200px; /* Adjust as needed */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+<header class="navbar-custom">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex-shrink-0">
+                <img src="/coooking.png" class="h-16 w-auto" alt="RecipeBook Logo">
+            </div>
+            <div class="hidden sm:block">
+                <div class="ml-10 flex items-baseline space-x-4">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/recipes" class="nav-link">Recipes</a>
+                    <a href="/categories/list" class="nav-link">Categories</a>
+                    <a href="/about" class="nav-link">About</a>
+                    <a href="/contact" class="nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="page-container">
+    <div class="container mt-5">
+        <h1 class="recipe-title">Recipe List</h1>
+        <div class="d-flex justify-content-between mb-3">
+            <a href="/recipes/new" class="btn-add">Add New Recipe</a>
+            <form th:action="@{/recipes/search}" method="get" class="form-inline">
+                <input type="text" name="keyword" class="form-control mr-2" placeholder="Search recipes..." />
+                <button type="submit" class="btn-search">Search</button>
+            </form>
+        </div>
+        <table class="table table-hover table-bordered">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th class="description-column">Description</th>
+                <th>Categories</th>
+                <th class="image-url-column">Image URL</th>
+                <th>Cooking Time</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="recipe : ${recipes}">
+                <td th:text="${recipe.id}"></td>
+                <td th:text="${recipe.name}"></td>
+                <td class="description-column" th:text="${recipe.description}"></td>
+                <td th:text="${#strings.arrayJoin(recipe.categories.![name], ', ')}"></td>
+                <td class="image-url-column" th:text="${recipe.imageUrl}"></td>
+                <td th:text="${recipe.cookingTime}"></td>
+                <td>
+                    <a th:href="@{/recipes/edit/{id}(id=${recipe.id})}" class="btn btn-secondary btn-edit">Edit</a>
+                    <form th:action="@{/recipes/delete/{id}(id=${recipe.id})}" method="post" style="display: inline;">
+                        <button type="submit" class="btn btn-danger btn-custom" onclick="return confirm('Are you sure you want to delete this recipe?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

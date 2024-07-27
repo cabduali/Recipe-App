@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Recipe Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body{
+           min-height: 100vh;
+           background: #f3f2fc;
+        }
+        .card {
+            max-width: 600px;
+            margin: 0 auto;
+            margin-top: 20px;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+        .card-img-top {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .card-title {
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        .card-text {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        .card-text strong {
+            color: #2c3e50;
+        }
+        .btn{
+            background: #E1979F;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 25px;
+            color: white;
+        }
+        .btn:hover {
+            background: #3C008D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-4">
+    <div class="card">
+        <img th:src="@{${recipe.imageUrl}}" class="card-img-top" alt="Recipe Image">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${recipe.name}">Recipe Name</h5>
+            <p class="card-text"><strong>Description:</strong> <span th:text="${recipe.description}">Recipe Description</span></p>
+            <p class="card-text"><strong>Categories:</strong>
+                <span th:each="category : ${recipe.categories}" th:text="${category.name}">Category Name</span>
+            </p>
+            <p class="card-text"><strong>Cooking Time:</strong> <span th:text="${recipe.cookingTime}">Cooking Time</span></p>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <a th:href="@{/recipes}" class="btn ">Back to Recipes</a>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

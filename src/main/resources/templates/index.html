@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecipeBook</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .navbar-custom {
+            background-color: #3C008D;
+            padding: 10px 20px; /* Adjust padding for better alignment */
+        }
+        .nav-link {
+            color: white;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+        }
+        .nav-link:hover {
+            color: #94a3b8; /* Lighter color on hover */
+        }
+        .nav-item {
+            margin-left: 20px; /* Adjust spacing between nav items */
+        }
+        .dropdown-menu {
+            background-color: #0c0e1a; /* Matching dropdown background color */
+        }
+        .dropdown-item {
+            color: white !important; /* Dropdown text color */
+        }
+        .dropdown-item:hover {
+            background-color: #343a40; /* Dropdown hover background color */
+        }
+        .navbar-brand img {
+            height: 40px; /* Adjust logo size */
+            width: auto;
+            margin-right: 10px; /* Adjust spacing between logo and text */
+        }
+        .btn-custom {
+            text-decoration: none !important;
+        }
+        .btn-custom:hover {
+            text-decoration: none !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="">
+
+<!-- Header Section -->
+<header class="fixed top-0 left-0 w-full navbar-custom shadow-lg z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex-shrink-0">
+                <img src="coooking.png" class="h-16 w-auto" alt="RecipeBook Logo">
+            </div>
+            <div class="hidden sm:block">
+                <div class="ml-10 flex items-baseline space-x-4">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/recipes" class="nav-link">Recipes</a>
+                    <a href="/categories/list" class="nav-link">Categories</a>
+                    <a href="/about" class="nav-link">About</a>
+                    <a href="/contact" class="nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="pt-16">
+    <!-- Hero Section -->
+    <div class="h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('DALL·E 2024-07-16 09.06.39 - A beautiful, modern kitchen with a large island in the center, filled with various ingredients and cooking tools. The room is well-lit, with natural l.webp');">
+        <div class="text-center text-white max-w-4xl">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Welcome to RecipeBook</h1>
+            <p class="text-lg md:text-xl lg:text-2xl mb-6 text-gray-300">Explore a world of flavors with our extensive collection of recipes. Dive into different cultures through each dish and share your culinary journey with friends and family.</p>
+            <div>
+                <a href="/categories/list" class="bg-[#E1979F] text-black py-3 px-6 rounded-full text-lg md:text-xl lg:text-2xl m-2 inline-block hover:opacity-75 btn-custom">Browse Categories</a>
+                <a href="/recipes" class="bg-[#3C008D] text-white py-3 px-6 rounded-full text-lg md:text-xl lg:text-2xl m-2 inline-block hover:opacity-75 btn-custom">Find Recipes</a>
+            </div>
+        </div>
+    </div>
+<section class="bg-[#f3f2fc]">
+    <!-- Benefits Section -->
+    <section class="text-gray-700 body-font bg-[#f3f2fc]">
+        <div class="container px-5 py-12 mx-auto">
+            <div class="flex flex-col text-center w-full mb-12">
+                <h1 class="text-4xl font-medium title-font mb-4 text-gray-900">Benefits</h1>
+                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Discover the amazing benefits of using RecipeBook for your culinary adventures.</p>
+            </div>
+            <div class="flex flex-wrap -m-4 text-center justify-center">
+                <div class="p-4 md:w-1/4 sm:w-1/2">
+                    <div class="px-4 py-6 transform transition duration-500 hover:scale-110">
+                        <div class="flex justify-center">
+                            <img src="veriety.png" class="w-32 mb-3 rounded-full" alt="Variety of Recipes">
+                        </div>
+                        <h2 class="title-font font-regular text-2xl text-gray-900">Variety of Recipes</h2>
+                        <p class="leading-relaxed text-base">Access a wide range of recipes from different cuisines.</p>
+                    </div>
+                </div>
+                <div class="p-4 md:w-1/4 sm:w-1/2">
+                    <div class="px-4 py-6 transform transition duration-500 hover:scale-110">
+                        <div class="flex justify-center">
+                            <img src="Step-by-step.png" class="w-32 mb-3 rounded-full" alt="Step-by-Step Instructions">
+                        </div>
+                        <h2 class="title-font font-regular text-2xl text-gray-900">Step-by-Step Instructions</h2>
+                        <p class="leading-relaxed text-base">Detailed instructions to help you cook with confidence.</p>
+                    </div>
+                </div>
+                <div class="p-4 md:w-1/4 sm:w-1/2">
+                    <div class="px-4 py-6 transform transition duration-500 hover:scale-110">
+                        <div class="flex justify-center">
+                            <img src="Nutritional Information.png" class="w-32 mb-3 rounded-full" alt="Nutritional Information">
+                        </div>
+                        <h2 class="title-font font-regular text-2xl text-gray-900">Nutritional Information</h2>
+                        <p class="leading-relaxed text-base">Get detailed nutritional information for each recipe.</p>
+                    </div>
+                </div>
+                <div class="p-4 md:w-1/4 sm:w-1/2">
+                    <div class="px-4 py-6 transform transition duration-500 hover:scale-110">
+                        <div class="flex justify-center">
+                            <img src="Community Support.jpg" class="w-32 mb-3 rounded-full" alt="Community Support">
+                        </div>
+                        <h2 class="title-font font-regular text-2xl text-gray-900">Community Support</h2>
+                        <p class="leading-relaxed text-base">Join a community of cooking enthusiasts and share your experiences.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="text-gray-700 body-font">
+        <div class="container px-5 py-12 mx-auto">
+            <div class="flex flex-col text-center w-full mb-0">
+                <h1 class="text-4xl font-medium title-font mb-4 text-gray-900">Services</h1>
+                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Please call at least 24 hours in advance for catering orders</p>
+            </div>
+            <div class="flex flex-wrap -m-4 text-center justify-center">
+                <div class="p-4 md:w-1/4 sm:w-1/2">
+                    <div class="flex justify-center">
+                        <img src="img_1.jpg" class="w-32 h-32 rounded-full mb-3 object-cover border-4 border-white shadow-lg">
+                    </div>
+                    <h2 class="title-font font-medium text-2xl text-gray-900">Fresh Salads</h2>
+                </div>
+                <div class="p-4 md:w-1/4 sm:w-1/2">
+                    <div class="flex justify-center">
+                        <img src="img_2.jpg" class="w-32 h-32 rounded-full mb-3 object-cover border-4 border-white shadow-lg">
+                    </div>
+                    <h2 class="title-font font-medium text-2xl text-gray-900">Party Platters</h2>
+                </div>
+                <div class="p-4 md:w-1/4 sm:w-1/2">
+                    <div class="flex justify-center">
+                        <img src="img_3.jpg" class="w-32 h-32 rounded-full mb-3 object-cover border-4 border-white shadow-lg">
+                    </div>
+                    <h2 class="title-font font-medium text-2xl text-gray-900">Sea Food</h2>
+                </div>
+                <div class="p-4 md:w-1/4 sm:w-1/2">
+                    <div class="flex justify-center">
+                        <img src="img_4.jpg" class="w-32 h-32 rounded-full mb-3 object-cover border-4 border-white shadow-lg">
+                    </div>
+                    <h2 class="title-font font-medium text-2xl text-gray-900">Sea Food</h2>
+                </div>
+            </div>
+            <div class="flex flex-wrap -m-4 text-center justify-center">
+                <div class="p-4 md:w-1/4 sm:w-1/2">
+                    <div class="flex justify-center">
+                        <img src="img_5.jpg" class="w-32 h-32 rounded-full mb-3 object-cover border-4 border-white shadow-lg">
+                    </div>
+                    <h2 class="title-font font-medium text-2xl text-gray-900">Fresh Salads</h2>
+                </div>
+                <div class="p-4 md:w-1/4 sm:w-1/2">
+                    <div class="flex justify-center">
+                        <img src="img_6.jpg" class="w-32 h-32 rounded-full mb-3 object-cover border-4 border-white shadow-lg">
+                    </div>
+                    <h2 class="title-font font-medium text-2xl text-gray-900">Party Platters</h2>
+                </div>
+                <div class="p-4 md:w-1/4 sm:w-1/2">
+                    <div class="flex justify-center">
+                        <img src="img_7.jpg" class="w-32 h-32 rounded-full mb-3 object-cover border-4 border-white shadow-lg">
+                    </div>
+                    <h2 class="title-font font-medium text-2xl text-gray-900">Sea Food</h2>
+                </div>
+                <div class="p-4 md:w-1/4 sm:w-1/2">
+                    <div class="flex justify-center">
+                        <img src="img_8.jpg" class="w-32 h-32 rounded-full mb-3 object-cover border-4 border-white shadow-lg">
+                    </div>
+                    <h2 class="title-font font-medium text-2xl text-gray-900">Sea Food</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Why Us Section -->
+    <section class="text-gray-700 body-font bg-[#f3f2fc]">
+        <div class="flex justify-center mt-10 text-4xl font-regular">
+            Why Us?
+        </div>
+        <div class="container px-5 py-12 mx-auto">
+            <div class="flex flex-wrap text-center justify-center">
+                <div class="p-4 md:w-1/4 sm:w-1/2">
+                    <div class="px-4 py-6 transform transition duration-500 hover:scale-110">
+                        <div class="flex justify-center">
+                            <img src="https://image3.jdomni.in/banner/13062021/58/97/7C/E53960D1295621EFCB5B13F335_1623567851299.png?output-format=webp" class="w-32 mb-3 rounded-full">
+                        </div>
+                        <h2 class="title-font font-regular text-2xl text-gray-900">Fresh Ingredients</h2>
+                    </div>
+                </div>
+                <div class="p-4 md:w-1/4 sm:w-1/2">
+                    <div class="px-4 py-6 transform transition duration-500 hover:scale-110">
+                        <div class="flex justify-center">
+                            <img src="https://image2.jdomni.in/banner/13062021/3E/57/E8/1D6E23DD7E12571705CAC761E7_1623567977295.png?output-format=webp" class="w-32 mb-3 rounded-full">
+                        </div>
+                        <h2 class="title-font font-regular text-2xl text-gray-900">Delicious Recipes</h2>
+                    </div>
+                </div>
+                <div class="p-4 md:w-1/4 sm:w-1/2">
+                    <div class="px-4 py-6 transform transition duration-500 hover:scale-110">
+                        <div class="flex justify-center">
+                            <img src="https://image3.jdomni.in/banner/13062021/16/7E/7E/5A9920439E52EF309F27B43EEB_1623568010437.png?output-format=webp" class="w-32 mb-3 rounded-full">
+                        </div>
+                        <h2 class="title-font font-regular text-2xl text-gray-900">Easy to Follow</h2>
+                    </div>
+                </div>
+                <div class="p-4 md:w-1/4 sm:w-1/2">
+                    <div class="px-4 py-6 transform transition duration-500 hover:scale-110">
+                        <div class="flex justify-center">
+                            <img src="https://image3.jdomni.in/banner/13062021/EB/99/EE/8B46027500E987A5142ECC1CE1_1623567959360.png?output-format=webp" class="w-32 mb-3 rounded-full">
+                        </div>
+                        <h2 class="title-font font-regular text-2xl text-gray-900">Expert Tips</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </section>
+</main>
+
+<!-- Footer Section -->
+<div class="bg-white">
+    <div class="max-w-screen-lg px-4 sm:px-6 text-gray-800 sm:grid md:grid-cols-4 sm:grid-cols-2 mx-auto">
+        <div class="p-5">
+            <h3 class="font-bold text-xl text-indigo-600">RecipeBook</h3>
+        </div>
+        <div class="p-5">
+            <div class="text-sm uppercase text-indigo-600 font-bold">Resources</div>
+            <a class="my-3 block" href="/#">Documentation <span class="text-teal-600 text-xs p-1"></span></a>
+            <a class="my-3 block" href="/#">Tutorials <span class="text-teal-600 text-xs p-1"></span></a>
+            <a class="my-3 block" href="/#">Support <span class="text-teal-600 text-xs p-1">New</span></a>
+        </div>
+        <div class="p-5">
+            <div class="text-sm uppercase text-indigo-600 font-bold">Support</div>
+            <a class="my-3 block" href="/#">Help Center <span class="text-teal-600 text-xs p-1"></span></a>
+            <a class="my-3 block" href="/#">Privacy Policy <span class="text-teal-600 text-xs p-1"></span></a>
+            <a class="my-3 block" href="/#">Conditions <span class="text-teal-600 text-xs p-1"></span></a>
+        </div>
+        <div class="p-5">
+            <div class="text-sm uppercase text-indigo-600 font-bold">Contact us</div>
+            <a class="my-3 block" href="/#">123 Recipe St, Food City, Yum 45678
+                <span class="text-teal-600 text-xs p-1"></span></a>
+            <a class="my-3 block" href="mailto:contact@recipebook.com">contact@recipebook.com
+                <span class="text-teal-600 text-xs p-1"></span></a>
+        </div>
+    </div>
+</div>
+<div class="bg-white pt-2">
+    <div class="flex pb-5 px-3 m-auto pt-5 border-t text-gray-800 text-sm flex-col
+      max-w-screen-lg items-center">
+        <div class="md:flex-auto md:flex-row-reverse mt-2 flex-row flex">
+            <a href="https://twitter.com" target="_blank" class="w-6 mx-1">
+                <svg class="fill-current cursor-pointer text-gray-500 hover:text-indigo-600" width="100%" height="100%"
+                     viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+                     style="fill-rule: evenodd; clip-rule: evenodd; stroke-linejoin: round; stroke-miterlimit: 2;">
+                    <path id="Twitter" d="M24,12c0,6.627 -5.373,12 -12,12c-6.627,0 -12,-5.373 -12,-12c0,-6.627
+                  5.373,-12 12,-12c6.627,0 12,5.373 12,12Zm-6.465,-3.192c-0.379,0.168
+                  -0.786,0.281 -1.213,0.333c0.436,-0.262 0.771,-0.676
+                  0.929,-1.169c-0.408,0.242 -0.86,0.418 -1.341,0.513c-0.385,-0.411
+                  -0.934,-0.667 -1.541,-0.667c-1.167,0 -2.112,0.945 -2.112,2.111c0,0.166
+                  0.018,0.327 0.054,0.482c-1.754,-0.088 -3.31,-0.929
+                  -4.352,-2.206c-0.181,0.311 -0.286,0.674 -0.286,1.061c0,0.733 0.373,1.379
+                  0.94,1.757c-0.346,-0.01 -0.672,-0.106 -0.956,-0.264c-0.001,0.009
+                  -0.001,0.018 -0.001,0.027c0,1.023 0.728,1.877 1.694,2.07c-0.177,0.049
+                  -0.364,0.075 -0.556,0.075c-0.137,0 -0.269,-0.014 -0.397,-0.038c0.268,0.838
+                  1.048,1.449 1.972,1.466c-0.723,0.566 -1.633,0.904 -2.622,0.904c-0.171,0
+                  -0.339,-0.01 -0.504,-0.03c0.934,0.599 2.044,0.949 3.237,0.949c3.883,0
+                  6.007,-3.217 6.007,-6.008c0,-0.091 -0.002,-0.183 -0.006,-0.273c0.413,-0.298
+                  0.771,-0.67 1.054,-1.093Z"></path>
+                </svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" class="w-6 mx-1">
+                <svg class="fill-current cursor-pointer text-gray-500 hover:text-indigo-600" width="100%" height="100%"
+                     viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+                     style="fill-rule: evenodd; clip-rule: evenodd; stroke-linejoin: round; stroke-miterlimit: 2;">
+                    <path id="Facebook" d="M24,12c0,6.627 -5.373,12 -12,12c-6.627,0 -12,-5.373 -12,-12c0,-6.627
+                  5.373,-12 12,-12c6.627,0 12,5.373
+                  12,12Zm-11.278,0l1.294,0l0.172,-1.617l-1.466,0l0.002,-0.808c0,-0.422
+                  0.04,-0.648 0.646,-0.648l0.809,0l0,-1.616l-1.295,0c-1.555,0 -2.103,0.784
+                  -2.103,2.102l0,0.97l-0.969,0l0,1.617l0.969,0l0,4.689l1.941,0l0,-4.689Z"></path>
+                </svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="w-6 mx-1">
+                <svg class="fill-current cursor-pointer text-gray-500 hover:text-indigo-600" width="100%" height="100%"
+                     viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+                     style="fill-rule: evenodd; clip-rule: evenodd; stroke-linejoin: round; stroke-miterlimit: 2;">
+                    <g id="Layer_1">
+                        <circle id="Oval" cx="12" cy="12" r="12"></circle>
+                        <path id="Shape" d="M19.05,8.362c0,-0.062 0,-0.125 -0.063,-0.187l0,-0.063c-0.187,-0.562
+                     -0.687,-0.937 -1.312,-0.937l0.125,0c0,0 -2.438,-0.375 -5.75,-0.375c-3.25,0
+                     -5.75,0.375 -5.75,0.375l0.125,0c-0.625,0 -1.125,0.375
+                     -1.313,0.937l0,0.063c0,0.062 0,0.125 -0.062,0.187c-0.063,0.625 -0.25,1.938
+                     -0.25,3.438c0,1.5 0.187,2.812 0.25,3.437c0,0.063 0,0.125
+                     0.062,0.188l0,0.062c0.188,0.563 0.688,0.938 1.313,0.938l-0.125,0c0,0
+                     2.437,0.375 5.75,0.375c3.25,0 5.75,-0.375 5.75,-0.375l-0.125,0c0.625,0
+                     1.125,-0.375 1.312,-0.938l0,-0.062c0,-0.063 0,-0.125
+                     0.063,-0.188c0.062,-0.625 0.25,-1.937 0.25,-3.437c0,-1.5 -0.125,-2.813
+                     -0.25,-3.438Zm-4.634,3.927l-3.201,2.315c-0.068,0.068 -0.137,0.068
+                     -0.205,0.068c-0.068,0 -0.136,0 -0.204,-0.068c-0.136,-0.068 -0.204,-0.204
+                     -0.204,-0.34l0,-4.631c0,-0.136 0.068,-0.273 0.204,-0.341c0.136,-0.068
+                     0.272,-0.068 0.409,0l3.201,2.316c0.068,0.068 0.136,0.204
+                     0.136,0.34c0.068,0.136 0,0.273 -0.136,0.341Z" style="fill: rgb(255, 255, 255);"></path>
+                    </g>
+                </svg>
+            </a>
+        </div>
+        <div class="my-5">© Copyright 2024. All Rights Reserved by RecipeBook.</div>
+    </div>
+</div>
+
+<script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>

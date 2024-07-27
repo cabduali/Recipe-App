@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Category List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f2fc;
+        }
+
+        .page-container {
+            padding: 0;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .navbar-custom {
+            background-color: #3C008D; /* Dark background color */
+            padding: 10px 20px; /* Adjust padding for better alignment */
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-link {
+            color: white;
+            font-size: 16px; /* Adjust font size */
+            font-family: Arial, sans-serif; /* Adjust font family */
+        }
+
+        .nav-link:hover {
+            color: #ddd !important; /* Lighter color on hover */
+        }
+
+        .nav-item {
+            margin-left: 20px; /* Adjust spacing between nav items */
+        }
+
+        .table thead th {
+            background-color: #3C008D;
+            color: white; /* Optional: change text color for better contrast */
+        }
+
+        .btn-edit {
+            background-color:#E1979F;
+            color: white; /* Optional: change text color for better contrast */
+            border: none; /* Remove border */
+        }
+
+        .btn-edit:hover {
+            background-color:#3C008D;
+        }
+
+        .btn-add, .btn-search {
+            background: #E1979F;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: none;
+            font-size: 16px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            text-decoration: none; /* Remove underline from links */
+        }
+
+        .btn-add:hover, .btn-search:hover {
+            background: #3C008D;
+            box-shadow: 0 5px 15px rgba(75, 0, 130, 0.3);
+            text-decoration: none; /* Remove underline on hover */
+            color: white; /* Keep text color white */
+        }
+
+        .btn-add:focus, .btn-search:focus {
+            text-decoration: none; /* Remove underline on focus */
+            background: linear-gradient(90deg, #3C008D 0%, #4B0082 100%);
+            box-shadow: 0 5px 15px rgba(75, 0, 130, 0.3);
+            color: white; /* Keep text color white */
+        }
+
+        .category-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 3em;
+            font-weight: 700;
+            text-align: center;
+            color: #4B0082;
+            margin-top: 100px; /* Adjust for fixed header */
+            margin-bottom: 30px;
+        }
+
+        .container {
+            margin-top: 100px; /* Adjust for fixed header */
+        }
+    </style>
+</head>
+<body>
+<header class="navbar-custom">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex-shrink-0">
+                <img src="/coooking.png" class="h-16 w-auto" alt="RecipeBook Logo">
+            </div>
+            <div class="hidden sm:block">
+                <div class="ml-10 flex items-baseline space-x-4">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/recipes" class="nav-link">Recipes</a>
+                    <a href="/categories/list" class="nav-link">Categories</a>
+                    <a href="/about" class="nav-link">About</a>
+                    <a href="/contact" class="nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="page-container">
+    <div class="container mt-5">
+        <h1 class="category-title">Category List</h1>
+        <div class="d-flex justify-content-between mb-3">
+            <a href="/categories/new" class="btn-add">Add New Category</a>
+            <form th:action="@{/categories/search}" method="get" class="form-inline">
+                <input type="text" name="keyword" class="form-control mr-2" placeholder="Search categories..." />
+                <button type="submit" class="btn-search">Search</button>
+            </form>
+        </div>
+        <table class="table table-hover table-bordered">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="category : ${categories}">
+                <td th:text="${category.id}"></td>
+                <td th:text="${category.name}"></td>
+                <td>
+                    <a th:href="@{/categories/edit/{id}(id=${category.id})}" class="btn btn-secondary btn-edit">Edit</a>
+                    <form th:action="@{/categories/delete/{id}(id=${category.id})}" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-custom" onclick="return confirm('Are you sure you want to delete this category?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

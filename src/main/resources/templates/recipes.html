@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .navbar-custom {
+            background-color: #3C008D;
+            padding: 10px 20px;
+        }
+        .nav-link {
+            color: white;
+            font-size: 16px; /* Adjust font size */
+            font-family: Arial, sans-serif; /* Adjust font family */
+            text-decoration: none; /* Remove underline */
+        }
+        .nav-link:hover {
+            color: #ddd !important; /* Lighter color on hover */
+            text-decoration: none; /* Ensure underline is removed on hover */
+        }
+        .nav-item {
+            margin-left: 20px; /* Adjust spacing between nav items */
+        }
+        .dropdown-menu {
+            background-color: #0c0e1a; /* Matching dropdown background color */
+        }
+        .dropdown-item {
+            color: white !important; /* Dropdown text color */
+            text-decoration: none; /* Remove underline */
+        }
+        .dropdown-item:hover {
+            background-color: #343a40; /* Dropdown hover background color */
+            text-decoration: none; /* Ensure underline is removed on hover */
+        }
+        .navbar-brand img {
+            height: 40px; /* Adjust logo size */
+            width: auto;
+            margin-right: 10px; /* Adjust spacing between logo and text */
+        }
+        .card {
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            width: 300px;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card img {
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .card-body {
+            padding: 15px;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #343a40; /* Dark grey color */
+            font-family: 'Arial', sans-serif;
+        }
+        .card-text {
+            color: #6c757d; /* Secondary grey color */
+        }
+        .content {
+            margin-top: 150px; /* Increase space between the navbar and the content */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center the cards */
+        }
+        a {
+            text-decoration: none; /* Remove underline from all links */
+        }
+        a:hover {
+            text-decoration: none; /* Ensure underline is removed on hover */
+        }
+    </style>
+</head>
+<body  class=" bg-[#f3f2fc] ">
+<header class="fixed w-full top-0 text-blue-900 shadow-lg navbar-custom z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex-shrink-0">
+                <img src="coooking.png" class="h-16 w-auto" alt="RecipeBook Logo">
+            </div>
+            <div class="hidden sm:block">
+                <div class="ml-10 flex items-baseline space-x-4">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/recipes/list" class="nav-link">Recipe list</a>
+                    <a href="/categories/list" class="nav-link">Categories</a>
+                    <a href="/about" class="nav-link">About </a>
+                    <a href="/contact" class="nav-link">Contact </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<section class=" bg-[#f3f2fc]">
+<div class="container mx-auto px-4 content">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div th:each="recipe : ${recipes}" class="card bg-white rounded-lg shadow-md overflow-hidden transform transition duration-500 hover:scale-105">
+            <a th:href="@{'/recipes/' + ${recipe.id}}">
+                <img th:src="@{${recipe.imageUrl}}" class="w-full object-cover" alt="Recipe Image">
+                <div class="p-6">
+                    <h5 class="text-lg font-bold text-gray-900 mb-2" th:text="${recipe.name}">Recipe Name</h5>
+                    <p class="text-gray-700 mb-4" th:text="${recipe.cookingTime}">Cooking Time</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+</section>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
